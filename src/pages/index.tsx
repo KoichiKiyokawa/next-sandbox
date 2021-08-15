@@ -8,7 +8,7 @@ type FormData = {
 };
 
 const Home = () => {
-  const { register, handleSubmit } = useForm<FormData>();
+  const { register, handleSubmit, formState } = useForm<FormData>();
 
   const onSubmit = (data: FormData) => {
     console.log(data);
@@ -18,7 +18,13 @@ const Home = () => {
     <Form onSubmit={handleSubmit(onSubmit)} className="border shadow rounded p-4 max-w-screen-md mx-auto mt-10">
       <h2 className="text-2xl font-bold">ログイン</h2>
 
-      <Input type="email" label="email" autoComplete="email" {...register("email")} />
+      <Input
+        type="email"
+        label="email"
+        aria-invalid={formState.errors.email?.type != null}
+        autoComplete="email"
+        {...register("email")}
+      />
       <Input type="password" label="password" autoComplete="current-password" {...register("password")} />
 
       <div className="flex justify-center">

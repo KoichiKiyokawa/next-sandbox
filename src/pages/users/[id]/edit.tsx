@@ -40,7 +40,11 @@ const UserEdit = () => {
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)} className="border rounded p-4 m-2">
-      <Input label="氏名" {...register("user.name", { minLength: 7 })} />
+      <Input
+        label="氏名"
+        {...register("user.name", { minLength: 7 })}
+        aria-invalid={formState.errors.user?.name != null}
+      />
       <ErrorMessage message={formState.errors.user?.name?.message} />
 
       <Input label="メールアドレス" type="email" {...register("user.email")} />
