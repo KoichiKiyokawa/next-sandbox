@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { pagesPath } from "src/utils/$path";
 import { useRepository } from "../../domains/core/repository";
 import { UserRepository } from "../../domains/user/repository";
 
@@ -11,7 +12,7 @@ const UserIndex = () => {
     <div>
       {users.map((user, i) => (
         <div key={i}>
-          <Link href={`/users/${user.id}`}>
+          <Link href={pagesPath.users._id(user.id).$url()}>
             <a className="text-blue-500">{user.name}</a>
           </Link>
           <p>{user.email}</p>

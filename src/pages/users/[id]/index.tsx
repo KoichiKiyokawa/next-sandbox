@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { pagesPath } from "src/utils/$path";
 import { useRepository } from "../../../domains/core/repository";
 import { UserRepository } from "../../../domains/user/repository";
 
@@ -14,12 +15,10 @@ const UserShow = () => {
 
   return (
     <div>
-      <a href={`/users/${user.id}`} className="text-blue-500">
-        {user.name}
-      </a>
+      <p className="text-blue-500">{user.name}</p>
       <p>{user.email}</p>
 
-      <Link href={`/users/${user.id}/edit`}>edit</Link>
+      <Link href={pagesPath.users._id(user.id).edit.$url()}>edit</Link>
     </div>
   );
 };

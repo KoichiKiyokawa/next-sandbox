@@ -1,3 +1,2 @@
-import { ReactNode } from "react";
-
-export const ErrorMessage = ({ children }: { children: ReactNode }) => <span className="text-red-500">{children}</span>;
+export const ErrorMessage = ({ message }: { message?: string }) =>
+  message ? <span className="text-red-500">{message}</span> : null;
